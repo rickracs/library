@@ -1,14 +1,6 @@
 
 // Q - is this a good way to initialize variables? Can I do this inside the functions?
 let myLibrary = [];
-let newBook;
-let bookTitle;
-let bookAuthor;
-let bookPages;
-let bookRead;
-let removeButton;
-let removeBook;
-let readStatus;
 
 const shelf = document.querySelector(".shelf");
 const addBook = document.querySelector(".add-book");
@@ -65,13 +57,13 @@ function displayBooks() {
 
     myLibrary.forEach((book, index) => {
 
-        newBook = document.createElement("div");
+        let newBook = document.createElement("div");
         newBook.classList.add("book");
-        bookTitle = document.createElement("h3");
-        bookAuthor = document.createElement("p");
-        bookPages = document.createElement("p");
-        bookRead = document.createElement("button");
-        removeButton = document.createElement("button");
+        let bookTitle = document.createElement("h3");
+        let bookAuthor = document.createElement("p");
+        let bookPages = document.createElement("p");
+        let bookRead = document.createElement("button");
+        let removeButton = document.createElement("button");
 
         bookTitle.textContent = book.title;
         bookAuthor.textContent = "by " + book.author;
@@ -108,11 +100,11 @@ function removeBookFromLibrary(e) {
 
 //function to listen for clicks on books, doesn't seem to work without function
 function listenForClick() {
-    removeBook = document.querySelectorAll(".remove-book");
+    let removeBook = document.querySelectorAll(".remove-book");
     removeBook.forEach(book => {
         book.addEventListener("click", removeBookFromLibrary);
     })
-    readStatus = document.querySelectorAll(".read-status");
+    let readStatus = document.querySelectorAll(".read-status");
     readStatus.forEach(book => {
         book.addEventListener("click", changeReadStatus);
     })
