@@ -25,9 +25,12 @@ function Book(title, author, pages, read) {
 Book.prototype.changeStatus = function () {
     if (this.read == "read") {
         this.read = "not read yet"
+        console.log(this);
+
     }
     else {
         this.read = "read"
+        console.log(this);
     }
 }
 
@@ -70,7 +73,10 @@ function displayBooks() {
         bookPages.textContent = book.pages + " pages";
         bookRead.textContent = book.read;
         bookRead.setAttribute("data-id", index);
-        bookRead.classList.add("read-status")
+        bookRead.classList.add("read-status");
+        if (book.read == "not read yet") {
+            bookRead.classList.add("not-read-yet");
+        }
         removeButton.textContent = "X";
         removeButton.setAttribute("data-id", index);
         removeButton.classList.add("remove-book");
@@ -90,6 +96,9 @@ function displayBooks() {
 function changeReadStatus(e) {
     myLibrary[e.target.getAttribute("data-id")].changeStatus();
     e.target.textContent = myLibrary[e.target.getAttribute("data-id")].read;
+    if (myLibrary[e.target.getAttribute("data-id")].read == "not read yet")
+    e.target.classList.add("not-read-yet")
+    else e.target.classList.remove("not-read-yet");
 }
 
 //remove a book from the array using splice
